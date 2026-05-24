@@ -1,0 +1,136 @@
+/* src/pages/ConsultarLivros.css */
+.consulta-titulo {
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.busca-input {
+  width: 100%;
+  padding: 12px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+.lista-livros {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.livro-item {
+  background-color: #fff;
+  padding: 15px;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+  display: flex;
+  gap: 15px;
+  cursor: pointer;
+  align-items: center;
+  transition: background 0.2s;
+}
+
+.livro-item:hover {
+  background-color: #f1f8f1;
+}
+
+.livro-item-capa {
+  width: 60px;
+  height: 90px;
+  border-radius: 4px;
+  object-fit: cover;
+}
+
+.livro-item-info h3 {
+  margin: 0 0 5px 0;
+  color: #2e7d32;
+}
+
+.livro-item-info p, .livro-item-info small {
+  margin: 0;
+  color: #555;
+}
+
+/* Detalhes do Livro */
+.detalhes-container {
+  background-color: #fff;
+  padding: 25px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+}
+
+.btn-voltar {
+  margin-bottom: 20px;
+  background: none;
+  border: none;
+  color: #2e7d32;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.detalhes-content {
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.detalhes-capa {
+  width: 180px;
+  height: 260px;
+  border-radius: 6px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.status-badge {
+  background-color: #e8f5e9;
+  color: #2e7d32;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.detalhes-sinopse {
+  background-color: #f9f9f9;
+  padding: 15px;
+  border-radius: 6px;
+  font-style: italic;
+  margin: 15px 0;
+  border-left: 4px solid #2e7d32;
+}
+
+.btn-emprestimo {
+  background-color: #2e7d32;
+  color: #fff;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 4px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 15px;
+}
+
+.btn-emprestimo:hover {
+  background-color: #1b5e20;
+}
+
+/* Adicione isso no final do seu ConsultarLivros.css */
+.btn-sinopse {
+  background-color: #ffffff;
+  color: #2e7d32;
+  border: 2px solid #2e7d32;
+  padding: 12px 24px;
+  border-radius: 4px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 15px;
+  margin-right: 10px; /* Dá um espaço para o botão de solicitar empréstimo */
+  transition: all 0.2s;
+}
+
+.btn-sinopse:hover {
+  background-color: #e8f5e9;
+}
