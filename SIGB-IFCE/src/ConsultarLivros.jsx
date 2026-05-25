@@ -73,10 +73,15 @@ const bancoDeLivros = [
   },
 ];
 
-export default function ConsultarLivros() {
+export default function ConsultarLivros({ selectedLivroId, onNavigate }) {
   const [busca, setBusca] = useState("");
-  const [livroSelecionado, setLivroSelecionado] = useState(null);
-  const [mostrarSinopse, setMostrarSinopse] = useState(false);
+  const [livroSelecionadoInterno, setLivroSelecionadoInterno] = useState(null);
+  const [activeTab, setActiveTab] = useState("sinopse");
+
+  const selectedLivro = bancoDeLivros.find(
+    (livro) => livro.id === selectedLivroId,
+  );
+  const livroSelecionado = selectedLivro || livroSelecionadoInterno;
 
   const livrosFiltrados = bancoDeLivros.filter(
     (livro) =>
@@ -91,8 +96,8 @@ export default function ConsultarLivros() {
   };
 
   const handleVerLivro = (livro) => {
-    setLivroSelecionado(livro);
-    setMostrarSinopse(false);
+    setLivroSelecionadoInterno(livro);
+    setActiveTab("sinopse");
   };
 
   return (
@@ -140,58 +145,123 @@ export default function ConsultarLivros() {
       ) : (
         <div className="detalhes-container">
           <button
-            onClick={() => setLivroSelecionado(null)}
+            onClick={() => {
+              setLivroSelecionadoInterno(null);
+              onNavigate("consultar");
+            }}
             className="btn-voltar"
           >
             ← Voltar para a busca
           </button>
 
-          <div className="detalhes-content">
-            <img
-              src={livroSelecionado.imagem}
-              alt={livroSelecionado.titulo}
-              className="detalhes-capa"
-            />
-
-            <div style={{ flex: 1 }}>
-              <span className="status-badge">• {livroSelecionado.status}</span>
-              <h2 style={{ marginTop: "10px" }}>{livroSelecionado.titulo}</h2>
-              <p>
-                <strong>Autor:</strong> {livroSelecionado.autor} |{" "}
-                <strong>Ano:</strong> {livroSelecionado.ano}
-              </p>
-
-              {mostrarSinopse && (
-                <div className="detalhes-sinopse">
-                  "{livroSelecionado.sinopse}"
-                </div>
-              )}
-
-              <p style={{ marginBottom: "5px", marginTop: "15px" }}>
-                <strong>Localização:</strong> {livroSelecionado.localizacao}
-              </p>
-              <p>
-                <strong>ISBN:</strong> {livroSelecionado.isbn}
-              </p>
-
-              <div>
-                <button
-                  className="btn-sinopse"
-                  onClick={() => setMostrarSinopse(!mostrarSinopse)}
-                >
-                  {mostrarSinopse ? "OCULTAR SINOPSE" : "LER SINOPSE"}
-                </button>
-
-                <button
-                  className="btn-emprestimo"
-                  onClick={() =>
-                    handleSolicitarEmprestimo(livroSelecionado.titulo)
-                  }
-                >
-                  SOLICITAR EMPRÉSTIMO
-                </button>
+          <div className="detalhes-layout">
+            <aside className="detalhes-left">
+              <div className="capa-large">
+                <img
+                  src={livroSelecionado.imagem}
+                  alt={livroSelecionado.titulo}
+                />
               </div>
-            </div>
+
+              <div className="detalhes-actions">
+                <button className="btn-action">♡ Favoritar</button>
+                <button className="btn-action">🔗 Compartilhar</button>
+              </div>
+            </aside>
+
+            <section className="detalhes-right">
+              <div className="detalhes-head">
+                <h1 className="detalhes-titulo">{livroSelecionado.titulo}</h1>
+                <p className="detalhes-autor">por {livroSelecionado.autor}</p>
+
+                <div className="detalhes-tags">
+                  <span className="tag">Fantasia</span>
+                  <span className="tag">Aventura</span>
+                  <span className="tag">Clássico</span>
+                  <span className="tag">Literatura Britânica</span>
+                </div>
+              </div>
+
+              <div className="availability-card">
+                <div className="availability-info">
+                  <div className="availability-status">
+                    ✓ Disponível para Empréstimo
+                  </div>
+                  <div className="availability-meta">
+                    {livroSelecionado.exemplares} exemplares físicos disponíveis
+                    no momento.
+                    <br />
+                    Localização: <strong>{livroSelecionado.localizacao}</strong>
+                  </div>
+                </div>
+
+                <div className="availability-action">
+                  <button
+                    className="btn-reserva"
+                    onClick={() =>
+                      handleSolicitarEmprestimo(livroSelecionado.titulo)
+                    }
+                  >
+                    Solicitar Reserva
+                  </button>
+                </div>
+              </div>
+
+              <div className="detalhes-tabs">
+                <nav className="tabs-nav">
+                  <button
+                    className={activeTab === "sinopse" ? "tab active" : "tab"}
+                    onClick={() => setActiveTab("sinopse")}
+                  >
+                    Sinopse
+                  </button>
+                  <button
+                    className={activeTab === "ficha" ? "tab active" : "tab"}
+                    onClick={() => setActiveTab("ficha")}
+                  >
+                    Ficha Catalográfica
+                  </button>
+                </nav>
+
+                <div className="tab-content">
+                  {activeTab === "sinopse" && (
+                    <div>
+                      <p className="sinopse-paragraph">
+                        {livroSelecionado.sinopse}
+                      </p>
+                      <p className="sinopse-paragraph">
+                        Criado em {livroSelecionado.ano}, '
+                        {livroSelecionado.titulo}' é referência na sua categoria
+                        e contribui para a formação de leitores com repertório
+                        crítico.
+                      </p>
+                    </div>
+                  )}
+
+                  {activeTab === "ficha" && (
+                    <div className="ficha">
+                      <p>
+                        <strong>Autor:</strong> {livroSelecionado.autor}
+                      </p>
+                      <p>
+                        <strong>Ano:</strong> {livroSelecionado.ano}
+                      </p>
+                      <p>
+                        <strong>ISBN:</strong> {livroSelecionado.isbn}
+                      </p>
+                      <p>
+                        <strong>Localização:</strong>{" "}
+                        {livroSelecionado.localizacao}
+                      </p>
+                      <p>
+                        <strong>Exemplares:</strong>{" "}
+                        {livroSelecionado.exemplares}
+                      </p>
+                    </div>
+                  )}
+                </div>
+              </div>
+            </section>
           </div>
         </div>
       )}

@@ -1,0 +1,98 @@
+.atendimento-container {
+  display: flex;
+  justify-content: center;
+  padding: 20px 0;
+}
+
+.atendimento-card {
+  width: 100%;
+  max-width: 760px;
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: var(--shadow);
+  padding: 32px;
+}
+
+.atendimento-card h2 {
+  margin-top: 0;
+  color: #1f2937;
+}
+
+.atendimento-card p {
+  margin: 8px 0 24px;
+  color: #4b5563;
+  line-height: 1.65;
+}
+
+.atendimento-alert {
+  background-color: #ecfdf5;
+  border: 1px solid #a7f3d0;
+  color: #065f46;
+  padding: 14px 18px;
+  border-radius: 8px;
+  margin-bottom: 24px;
+}
+
+.atendimento-form {
+  display: grid;
+  gap: 18px;
+}
+
+.atendimento-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-weight: 600;
+  color: #374151;
+}
+
+.atendimento-form input,
+.atendimento-form textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  font-size: 16px;
+  color: #111827;
+  background-color: #f9fafb;
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s;
+}
+
+.atendimento-form input:focus,
+.atendimento-form textarea:focus {
+  outline: none;
+  border-color: #8b5cf6;
+  box-shadow: 0 0 0 4px rgba(139, 92, 246, 0.12);
+  background-color: #ffffff;
+}
+
+.atendimento-form textarea {
+  resize: vertical;
+  min-height: 140px;
+}
+
+.btn-enviar {
+  align-self: flex-start;
+  background-color: #8b5cf6;
+  color: #ffffff;
+  border: none;
+  padding: 14px 28px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.btn-enviar:hover {
+  background-color: #6d28d9;
+}
+
+@media (max-width: 640px) {
+  .atendimento-card {
+    padding: 24px;
+  }
+}

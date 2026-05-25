@@ -13,7 +13,7 @@ export default function Navbar({ onNavigate, currentPage }) {
           <img src={logoIFCE} alt="Logo IFCE" className="navbar-logo-img" />
           <div className="navbar-logo-text">
             <span>Portal Biblioteca</span>
-            <small>Campus Paracuru</small>
+            <small>Campus Acopiara</small>
           </div>
         </div>
 
