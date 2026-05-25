@@ -46,7 +46,10 @@ export default function Dashboard({ onVerLivro }) {
               <p className="livro-autor">{livro.autor}</p>
             </div>
 
-            <button onClick={() => onVerLivro(livro)} className="btn-detalhes">
+            <button
+              onClick={() => onVerLivro(livro.id)}
+              className="btn-detalhes"
+            >
               Ver Detalhes
             </button>
           </div>

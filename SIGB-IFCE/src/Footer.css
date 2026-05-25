@@ -1,11 +1,13 @@
-/* src/components/Footer.css */
 .footer {
-  background-color: #2e7d32; 
+  background-color: #2e7d32;
   color: #ffffff;
   padding: 20px 10px;
   text-align: center;
   font-size: 14px;
-  border-top: 4px solid #1b5e20; 
+  border-top: 4px solid #1b5e20;
+  flex: 1;
+  margin-top: auto;
+  width: 100%;
 }
 
 .footer-content {

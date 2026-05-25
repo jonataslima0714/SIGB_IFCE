@@ -1,4 +1,3 @@
-/* src/pages/ConsultarLivros.css */
 .consulta-titulo {
   color: #333;
   margin-bottom: 15px;
@@ -47,12 +46,12 @@
   color: #2e7d32;
 }
 
-.livro-item-info p, .livro-item-info small {
+.livro-item-info p,
+.livro-item-info small {
   margin: 0;
   color: #555;
 }
 
-/* Detalhes do Livro */
 .detalhes-container {
   background-color: #fff;
   padding: 25px;
@@ -79,7 +78,7 @@
   width: 180px;
   height: 260px;
   border-radius: 6px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .status-badge {
@@ -116,7 +115,6 @@
   background-color: #1b5e20;
 }
 
-/* Adicione isso no final do seu ConsultarLivros.css */
 .btn-sinopse {
   background-color: #ffffff;
   color: #2e7d32;
@@ -127,10 +125,181 @@
   font-weight: bold;
   cursor: pointer;
   margin-top: 15px;
-  margin-right: 10px; /* Dá um espaço para o botão de solicitar empréstimo */
+  margin-right: 10px;
   transition: all 0.2s;
 }
 
 .btn-sinopse:hover {
   background-color: #e8f5e9;
+}
+
+/* Novos estilos para layout de detalhes (claro, seguindo o tema do site) */
+.detalhes-layout {
+  display: flex;
+  gap: 28px;
+  align-items: flex-start;
+  margin-top: 12px;
+}
+
+.detalhes-left {
+  width: 320px;
+  min-width: 240px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.capa-large {
+  background-color: #fff;
+  border: 1px solid #e6e6e6;
+  border-radius: 8px;
+  padding: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.capa-large img {
+  width: 100%;
+  height: auto;
+  max-height: 480px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.detalhes-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.btn-action {
+  flex: 1;
+  background-color: #ffffff;
+  border: 1px solid #e5e7eb;
+  padding: 10px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  color: #374151;
+}
+
+.detalhes-right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.detalhes-titulo {
+  margin: 0;
+  font-size: 32px;
+  color: var(--text-h);
+}
+
+.detalhes-autor {
+  margin: 6px 0 12px;
+  color: #2e7d32;
+  font-weight: 600;
+}
+
+.detalhes-tags {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.tag {
+  background-color: #f3f4f6;
+  color: #374151;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 13px;
+}
+
+.availability-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #ffffff;
+  border: 1px solid #e6e6e6;
+  padding: 18px;
+  border-radius: 10px;
+  box-shadow: var(--shadow);
+}
+
+.availability-status {
+  color: #166534;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.availability-meta {
+  color: #4b5563;
+  font-size: 14px;
+}
+
+.btn-reserva {
+  background-color: #2e7d32;
+  color: #fff;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.btn-reserva:hover {
+  background-color: #1b5e20;
+}
+
+.detalhes-tabs {
+  margin-top: 6px;
+}
+
+.tabs-nav {
+  display: flex;
+  gap: 12px;
+  border-bottom: 1px solid #e6e6e6;
+}
+
+.tab {
+  background: none;
+  border: none;
+  padding: 12px 6px;
+  cursor: pointer;
+  color: #374151;
+  font-weight: 700;
+}
+
+.tab.active {
+  color: #2e7d32;
+  border-bottom: 3px solid #2e7d32;
+}
+
+.tab-content {
+  padding: 18px 0;
+}
+
+.sinopse-paragraph {
+  color: #374151;
+  line-height: 1.7;
+  margin-bottom: 14px;
+}
+
+.ficha p {
+  margin: 6px 0;
+  color: #374151;
+}
+
+@media (max-width: 900px) {
+  .detalhes-layout {
+    flex-direction: column;
+  }
+
+  .detalhes-left {
+    width: 100%;
+  }
+
+  .capa-large img {
+    max-height: 380px;
+  }
 }
