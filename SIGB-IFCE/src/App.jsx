@@ -4,6 +4,7 @@ import Footer from "./Footer";
 import Dashboard from "./Dashboard";
 import ConsultarLivros from "./ConsultarLivros";
 import Atendimento from "./Atendimento";
+import MeusEmprestimos from "./MeusEmprestimos";
 import Login from "./Login";
 
 export default function App() {
@@ -43,12 +44,7 @@ export default function App() {
 
         {currentPage === "atendimento" && <Atendimento />}
 
-        {currentPage === "meus-emprestimos" && (
-          <div style={{ padding: "40px", textAlign: "center" }}>
-            <h2>Meus Empréstimos</h2>
-            <p>Página em desenvolvimento.</p>
-          </div>
-        )}
+        {currentPage === "meus-emprestimos" && <MeusEmprestimos />}
       </main>
 
       <Footer />

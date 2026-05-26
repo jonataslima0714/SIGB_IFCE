@@ -2,7 +2,6 @@ import { useState } from "react";
 import "./Login.css";
 
 export default function Login({ onNavigate }) {
-  const [menuActive, setMenuActive] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [usuario, setUsuario] = useState("");
   const [senha, setSenha] = useState("");
@@ -29,33 +28,7 @@ export default function Login({ onNavigate }) {
           </div>
           <span className="logo-text">Login</span>
         </div>
-        
-        <div className="social-icons">
-          <a href="https://instagram.com" target="_blank" rel="noreferrer" title="Instagram"><i className="fa-brands fa-instagram"></i></a>
-          <a href="https://x.com" target="_blank" rel="noreferrer" title="X (Twitter)"><i className="fa-brands fa-x-twitter"></i></a>
-          <a href="https://facebook.com" target="_blank" rel="noreferrer" title="Facebook"><i className="fa-brands fa-facebook-f"></i></a>
-          <a href="https://youtube.com" target="_blank" rel="noreferrer" title="YouTube"><i className="fa-brands fa-youtube"></i></a>
-        </div>
-
-        <div className="header-right">
-          <button className="menu-btn" onClick={() => setMenuActive(true)} title="Menu">
-            <i className="fas fa-bars"></i>
-          </button>
-        </div>
       </header>
-
-      <nav className={`sidebar ${menuActive ? "active" : ""}`}>
-        <button className="close-btn" onClick={() => setMenuActive(false)}>
-          <i className="fas fa-times"></i>
-        </button>
-        <ul>
-          <li><a href="#" onClick={(e) => { e.preventDefault(); setMenuActive(false); onNavigate("dashboard"); }}>Dashboard</a></li>
-          <li><a href="#" className="active" onClick={(e) => e.preventDefault()}>Login</a></li>
-          <li><a href="#" onClick={(e) => { e.preventDefault(); setMenuActive(false); onNavigate("meus-emprestimos"); }}><strong>Meus Empréstimos</strong></a></li>
-          <li><a href="#" onClick={(e) => { e.preventDefault(); setMenuActive(false); onNavigate("consultar"); }}>Consultar Livros</a></li>
-          <li><a href="#" onClick={(e) => { e.preventDefault(); setMenuActive(false); onNavigate("atendimento"); }}>Atendimento</a></li>
-        </ul>
-      </nav>
 
       <main className="login-main">
         <div className="login-container">
