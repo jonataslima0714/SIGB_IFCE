@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./ConsultarLivros.css";
 import capaCapitaes from "../src/assets/Images/Capitaes da Areia.webp";
 import capaDracula from "../src/assets/Images/Dracula.webp";
@@ -18,6 +18,12 @@ const bancoDeLivros = [
     exemplares: 13,
     status: "DISPONÍVEL PARA EMPRÉSTIMO",
     imagem: capaCapitaes,
+    tags: [
+      "Literatura Brasileira",
+      "Romance Social",
+      "Clássico",
+      "Infantojuvenil",
+    ],
   },
   {
     id: 2,
@@ -31,6 +37,7 @@ const bancoDeLivros = [
     exemplares: 4,
     status: "DISPONÍVEL PARA EMPRÉSTIMO",
     imagem: capaDracula,
+    tags: ["Gótico", "Terror", "Clássico", "Literatura Estrangeira"],
   },
   {
     id: 3,
@@ -44,6 +51,7 @@ const bancoDeLivros = [
     exemplares: 6,
     status: "DISPONÍVEL PARA EMPRÉSTIMO",
     imagem: capaHobbit,
+    tags: ["Fantasia", "Aventura", "Clássico", "Infantojuvenil"],
   },
   {
     id: 4,
@@ -57,6 +65,7 @@ const bancoDeLivros = [
     exemplares: 3,
     status: "DISPONÍVEL PARA EMPRÉSTIMO",
     imagem: capaArvores,
+    tags: ["Ficção Juvenil", "Fantasia", "Aventura", "Romance"],
   },
   {
     id: 5,
@@ -70,6 +79,7 @@ const bancoDeLivros = [
     exemplares: 5,
     status: "DISPONÍVEL PARA EMPRÉSTIMO",
     imagem: capaCrime,
+    tags: ["Psicológico", "Drama", "Clássico", "Literatura Russa"],
   },
 ];
 
@@ -77,6 +87,17 @@ export default function ConsultarLivros({ selectedLivroId, onNavigate }) {
   const [busca, setBusca] = useState("");
   const [livroSelecionadoInterno, setLivroSelecionadoInterno] = useState(null);
   const [activeTab, setActiveTab] = useState("sinopse");
+  const [livrosSolicitados, setLivrosSolicitados] = useState(() => {
+    const salvos = localStorage.getItem("livros_solicitados");
+    return salvos ? JSON.parse(salvos) : [];
+  });
+
+  useEffect(() => {
+    localStorage.setItem(
+      "livros_solicitados",
+      JSON.stringify(livrosSolicitados),
+    );
+  }, [livrosSolicitados]);
 
   const selectedLivro = bancoDeLivros.find(
     (livro) => livro.id === selectedLivroId,
@@ -89,7 +110,12 @@ export default function ConsultarLivros({ selectedLivroId, onNavigate }) {
       livro.autor.toLowerCase().includes(busca.toLowerCase()),
   );
 
-  const handleSolicitarEmprestimo = (titulo) => {
+  const handleSolicitarEmprestimo = (livroId, titulo) => {
+    if (livrosSolicitados.includes(livroId)) {
+      alert("O livro já foi solicitado.");
+      return;
+    }
+    setLivrosSolicitados([...livrosSolicitados, livroId]);
     alert(
       `Empréstimo do livro "${titulo}" solicitado! Retire no balcão da biblioteca do IFCE.`,
     );
@@ -175,10 +201,11 @@ export default function ConsultarLivros({ selectedLivroId, onNavigate }) {
                 <p className="detalhes-autor">por {livroSelecionado.autor}</p>
 
                 <div className="detalhes-tags">
-                  <span className="tag">Fantasia</span>
-                  <span className="tag">Aventura</span>
-                  <span className="tag">Clássico</span>
-                  <span className="tag">Literatura Britânica</span>
+                  {livroSelecionado.tags?.map((tag) => (
+                    <span key={tag} className="tag">
+                      {tag}
+                    </span>
+                  ))}
                 </div>
               </div>
 
@@ -199,7 +226,10 @@ export default function ConsultarLivros({ selectedLivroId, onNavigate }) {
                   <button
                     className="btn-reserva"
                     onClick={() =>
-                      handleSolicitarEmprestimo(livroSelecionado.titulo)
+                      handleSolicitarEmprestimo(
+                        livroSelecionado.id,
+                        livroSelecionado.titulo,
+                      )
                     }
                   >
                     Solicitar Reserva

@@ -1,0 +1,269 @@
+.meus-emprestimos-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  background-color: #f8f9fa !important;
+  min-height: 100vh;
+}
+
+.meus-emprestimos-header {
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.meus-emprestimos-header h2 {
+  font-size: 32px;
+  color: #000000 !important;
+  font-weight: bold;
+  margin: 0 0 10px 0;
+}
+
+.total-emprestimos {
+  font-size: 16px;
+  color: #666666 !important;
+  margin: 0;
+}
+
+.emprestimos-section {
+  margin-bottom: 50px;
+}
+
+.section-title {
+  font-size: 22px;
+  color: #2f9e41;
+  font-weight: bold;
+  margin-bottom: 25px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #2f9e41;
+}
+
+.section-title.vencido-title {
+  color: #e03131;
+  border-bottom-color: #e03131;
+}
+
+.emprestimos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 30px;
+}
+
+.emprestimo-card {
+  background-color: #ffffff !important;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.emprestimo-card:hover {
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  transform: translateY(-5px);
+}
+
+.emprestimo-card.vencido {
+  border-left: 4px solid #e03131;
+}
+
+.card-image {
+  position: relative;
+  width: 100%;
+  height: 300px;
+  background-color: #f0f0f0 !important;
+  overflow: hidden;
+}
+
+.livro-capa {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.status-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: bold;
+  color: #ffffff !important;
+  background-color: #2f9e41;
+}
+
+.status-badge.status-ativo {
+  background-color: #2f9e41;
+}
+
+.status-badge.status-vencido {
+  background-color: #e03131;
+}
+
+.card-content {
+  padding: 20px;
+}
+
+.livro-titulo {
+  font-size: 18px;
+  color: #000000 !important;
+  font-weight: bold;
+  margin: 0 0 5px 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.livro-autor {
+  font-size: 14px;
+  color: #666666 !important;
+  margin: 0 0 15px 0;
+}
+
+.emprestimo-info {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+  padding: 15px;
+  background-color: #f8f9fa !important;
+  border-radius: 8px;
+}
+
+.info-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+}
+
+.info-label {
+  color: #666666 !important;
+  font-weight: 500;
+}
+
+.info-value {
+  color: #2f9e41;
+  font-weight: bold;
+}
+
+.dias-restantes.aviso {
+  color: #f59f00 !important;
+}
+
+.dias-vencidos {
+  color: #e03131 !important;
+}
+
+.btn-renovar,
+.btn-devolver,
+.btn-cancelar {
+  width: 100%;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-renovar {
+  background-color: #2f9e41;
+  color: #ffffff !important;
+}
+
+.btn-renovar:hover {
+  background-color: #237b32;
+  transform: scale(1.02);
+}
+
+.btn-devolver {
+  background-color: #e03131;
+  color: #ffffff !important;
+}
+
+.btn-devolver:hover {
+  background-color: #c00;
+  transform: scale(1.02);
+}
+
+.btn-cancelar {
+  background-color: #868e96;
+  color: #ffffff !important;
+}
+
+.btn-cancelar:hover {
+  background-color: #6c757d;
+  transform: scale(1.02);
+}
+
+.card-actions {
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+}
+
+.vazio-message {
+  text-align: center;
+  padding: 60px 20px;
+  color: #999999 !important;
+}
+
+.vazio-message i {
+  font-size: 48px;
+  color: #dddddd !important;
+  margin-bottom: 20px;
+  display: block;
+}
+
+.vazio-message p {
+  font-size: 18px;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .meus-emprestimos-container {
+    padding: 20px 10px;
+  }
+
+  .meus-emprestimos-header h2 {
+    font-size: 24px;
+  }
+
+  .emprestimos-grid {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+  }
+
+  .card-image {
+    height: 250px;
+  }
+
+  .card-content {
+    padding: 15px;
+  }
+
+  .emprestimo-info {
+    padding: 10px;
+    gap: 8px;
+  }
+
+  .info-item {
+    font-size: 12px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 3px;
+  }
+}
+
+@media (max-width: 480px) {
+  .emprestimos-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .card-image {
+    height: 300px;
+  }
+}
