@@ -1,3 +1,9 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 :root {
   --text: #6b6375;
   --text-h: #08060d;
@@ -24,10 +30,18 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
 
-  @media (max-width: 1024px) {
+@media (max-width: 1024px) {
+  :root {
     font-size: 16px;
   }
+}
+
+html,
+body {
+  overflow-x: hidden;
+  width: 100%;
 }
 
 body {
@@ -44,15 +58,15 @@ body {
 }
 
 .main-layout-container {
-  width: 1126px;
-  max-width: 100%;
+  width: 100%;
+  max-width: min(1126px, 100vw);
   margin: 0 auto;
+  padding: 0 20px;
   flex: 1;
   display: flex;
   flex-direction: column;
   background-color: #ffffff;
   border-inline: 1px solid var(--border);
-  box-sizing: border-box;
 }
 
 h1,
@@ -85,4 +99,41 @@ p {
   padding-bottom: 80px;
   width: 100%;
   box-sizing: border-box;
+}
+
+@media (max-width: 900px) {
+  h1 {
+    font-size: 42px;
+    margin: 24px 0;
+  }
+
+  h2 {
+    font-size: 22px;
+  }
+
+  .main-layout-container {
+    border-inline: none;
+  }
+
+  .main-content {
+    padding: 16px 0 70px;
+  }
+}
+
+@media (max-width: 640px) {
+  :root {
+    font-size: 15px;
+  }
+
+  h1 {
+    font-size: 34px;
+  }
+
+  .main-layout-container {
+    padding: 0 12px;
+  }
+
+  .main-content {
+    padding: 14px 0 70px;
+  }
 }

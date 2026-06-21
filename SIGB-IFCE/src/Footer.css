@@ -44,3 +44,15 @@
   text-decoration: underline;
   opacity: 0.9;
 }
+
+@media (max-width: 640px) {
+  .footer {
+    padding: 18px 12px;
+  }
+
+  .footer-links {
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+  }
+}

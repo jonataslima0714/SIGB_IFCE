@@ -63,7 +63,6 @@
   word-wrap: break-word;
 }
 
-
 .livro-autor {
   margin: 0 0 10px 0;
   font-size: 13px;
@@ -96,4 +95,26 @@
   border-radius: 8px;
   border: 1px solid #ddd;
   margin-top: 20px;
+}
+
+@media (max-width: 640px) {
+  .livros-grid {
+    gap: 16px;
+  }
+
+  .livro-card {
+    height: auto;
+  }
+
+  .livro-capa {
+    height: 180px;
+  }
+
+  .livro-titulo {
+    font-size: 14px;
+  }
+
+  .btn-detalhes {
+    padding: 10px 14px;
+  }
 }
