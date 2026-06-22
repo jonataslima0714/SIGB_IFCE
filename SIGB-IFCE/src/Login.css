@@ -373,3 +373,38 @@
     padding: 12px;
   }
 }
+
+.login-footer {
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  text-align: center;
+}
+
+.login-note {
+  color: #495057;
+  font-size: 14px;
+  margin: 0;
+}
+
+.cadastro-link,
+.cadastro-login-link {
+  width: 100%;
+  border: 1px solid #2f9e41;
+  background: transparent;
+  color: #2f9e41;
+  border-radius: 6px;
+  padding: 12px 18px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    background-color 0.2s,
+    color 0.2s;
+}
+
+.cadastro-link:hover,
+.cadastro-login-link:hover {
+  background-color: #eaf7ed;
+}

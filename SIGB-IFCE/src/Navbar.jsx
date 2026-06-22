@@ -1,13 +1,30 @@
+import { useState } from "react";
 import logoIFCE from "../src/assets/Images/IFCE logo.png";
 import "./Navbar.css";
 
 export default function Navbar({ onNavigate, currentPage }) {
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const handleNavigate = (page) => {
+    setMenuOpen(false);
+    onNavigate(page);
+  };
+
   return (
     <header className="navbar-header">
       <div className="navbar-container">
+        <button
+          className="nav-toggle"
+          onClick={() => setMenuOpen((prev) => !prev)}
+          aria-expanded={menuOpen}
+          aria-label="Abrir menu"
+          type="button"
+        >
+          ☰
+        </button>
         <div
           className="navbar-logo-container"
-          onClick={() => onNavigate("dashboard")}
+          onClick={() => handleNavigate("dashboard")}
           style={{ cursor: "pointer" }}
         >
           <img src={logoIFCE} alt="Logo IFCE" className="navbar-logo-img" />
@@ -17,28 +34,28 @@ export default function Navbar({ onNavigate, currentPage }) {
           </div>
         </div>
 
-        <nav className="navbar-menu">
+        <nav className={`navbar-menu ${menuOpen ? "open" : ""}`}>
           <button
             className={`nav-link ${currentPage === "dashboard" ? "active" : ""}`}
-            onClick={() => onNavigate("dashboard")}
+            onClick={() => handleNavigate("dashboard")}
           >
             Início
           </button>
           <button
             className={`nav-link ${currentPage === "consultar" ? "active" : ""}`}
-            onClick={() => onNavigate("consultar")}
+            onClick={() => handleNavigate("consultar")}
           >
             Consultar Livros
           </button>
           <button
             className={`nav-link ${currentPage === "meus-emprestimos" ? "active" : ""}`}
-            onClick={() => onNavigate("meus-emprestimos")}
+            onClick={() => handleNavigate("meus-emprestimos")}
           >
             Meus Empréstimos
           </button>
           <button
             className={`nav-link ${currentPage === "atendimento" ? "active" : ""}`}
-            onClick={() => onNavigate("atendimento")}
+            onClick={() => handleNavigate("atendimento")}
           >
             Atendimento
           </button>

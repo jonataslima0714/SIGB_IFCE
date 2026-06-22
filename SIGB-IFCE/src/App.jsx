@@ -4,6 +4,7 @@ import Footer from "./Footer";
 import Dashboard from "./Dashboard";
 import ConsultarLivros from "./ConsultarLivros";
 import Atendimento from "./Atendimento";
+import Cadastro from "./Cadastro";
 import MeusEmprestimos from "./MeusEmprestimos";
 import Login from "./Login";
 
@@ -25,6 +26,10 @@ export default function App() {
 
   if (currentPage === "login") {
     return <Login onNavigate={handleNavigate} />;
+  }
+
+  if (currentPage === "cadastro") {
+    return <Cadastro onNavigate={handleNavigate} />;
   }
 
   return (

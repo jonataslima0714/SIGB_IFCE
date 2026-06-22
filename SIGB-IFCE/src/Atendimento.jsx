@@ -3,7 +3,6 @@ import "./Atendimento.css";
 
 export default function Atendimento() {
   const [nome, setNome] = useState("");
-  const [data, setData] = useState("");
   const [email, setEmail] = useState("");
   const [mensagem, setMensagem] = useState("");
   const [enviado, setEnviado] = useState(false);
@@ -11,14 +10,13 @@ export default function Atendimento() {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    if (!nome || !data || !email || !mensagem) {
+    if (!nome || !email || !mensagem) {
       alert("Preencha todos os campos para enviar sua mensagem.");
       return;
     }
 
     setEnviado(true);
     setNome("");
-    setData("");
     setEmail("");
     setMensagem("");
   };
@@ -47,15 +45,6 @@ export default function Atendimento() {
               value={nome}
               onChange={(e) => setNome(e.target.value)}
               placeholder="Digite seu nome completo"
-            />
-          </label>
-
-          <label>
-            Data
-            <input
-              type="date"
-              value={data}
-              onChange={(e) => setData(e.target.value)}
             />
           </label>
 
